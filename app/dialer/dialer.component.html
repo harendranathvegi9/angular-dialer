@@ -1,0 +1,610 @@
+<input type='hidden' name='cid' id="cid" value='+61280155363'>
+<input type='hidden' name='agent_id' id="agent_id" value='1'>
+<input type='hidden' name='user_id' id="user_id" value=''>
+<input type='hidden' name='contact_id' id="contact_id" value=''>
+<input type='hidden' name='ip' id="ip" value='192.168.56.1'>
+<input type='hidden' name='rec' id="rec" value='0'>
+<input type='hidden' name='name_text' id="name_text" value=''>
+
+<nav class='navbar navbar-default'>
+    <div class='container-fluid'>
+        <div>
+            <ul class='nav navbar-nav' style='font-size:16px;'>
+
+                <li class='pull-left'>
+                    <timer (click)="toggle()"></timer>
+                </li>
+
+                <example></example>
+
+                <li class='dropdown pull-right'>
+                    <a href='#' class='dropdown-toggle' data-toggle='dropdown'><span id='agent_status'>Loading</span>
+                        <span class='caret'></span></a>
+                    <ul class='dropdown-menu' role='menu'>
+                        <li><a href='#' class='status_update'>Available</a></li>
+                        <li><a href='#' class='status_update'>Busy</a></li>
+                        <li><a href='#' class='status_update'>Away</a></li>
+                        <li class='divider'></li>
+                        <li><a href='#' class='status_update'>Offline</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class='container-fluid'>
+    <div class='jumbotron' style='padding-top:25px;'>
+        <div id='ph_warning' class='alert alert-danger text-center' role='alert'></div>
+        <h1 id='name' style='font-size:40px;text-align:center;margin:20px 0 0 0;'>Unknown</h1>
+        <p id='company' class='text-center' style='font-size:18px;color:#999;'></p>
+        <input type='text' name='ph' id="ph"
+               style="font-size:30px;height:40px;width:100%;text-align:center;border:0;background:transparent;"
+               placeholder="Phone Number" value=''>
+        <div class='row' style='padding-top:30px;'>
+            <button id='call' type='button' class='btn btn-lg btn-success btn-block call_btns' style='font-size:36px;'>
+                Call
+            </button>
+            <button id='end' type='button' class='btn btn-lg btn-danger btn-block call_btns' style='font-size:36px;'>
+                End
+            </button>
+            <button id='answer' type='button' class='btn btn-lg btn-success btn-block call_btns'
+                    style='font-size:36px;'>Answer
+            </button>
+            <button id='decline' type='button' class='btn btn-lg btn-danger btn-block call_btns'
+                    style='font-size:36px;'>Decline
+            </button>
+        </div>
+        <div class='row' style='padding:5px;'></div>
+        <div class='row'>
+            <button id='record' class='btn btn-lg btn-default btn-block '>Recording <span id='record_badge'
+                                                                                          class='badge'>OFF</span>
+            </button>
+        </div>
+        <p style='margin-top:75px;'>Phone number: <b>02 8015 5363</b></p>
+        <div style='background:#fff;'>
+            <ul class='nav nav-tabs' role='tablist' style='background:#eee;'>
+                <li style='font-size:30px;' class='active'>
+                    <a href='#history' class='t_tab' role='tab' data-toggle='tab'><span
+                            class='glyphicon glyphicon-earphone'></span></a>
+                </li>
+                <li style='font-size:30px;'>
+                    <a href='#missed' class='t_tab' role='tab' data-toggle='tab'><span
+                            class='glyphicon glyphicon-sort-by-attributes'></span></a>
+                </li>
+                <li style='font-size:30px;'>
+                    <a href='#voicemails' class='t_tab' role='tab' data-toggle='tab'><span
+                            class='glyphicon glyphicon-headphones'></span></a>
+                </li>
+                <li style='font-size:30px;'>
+                    <a href='#keypad' class='t_tab' role='tab' data-toggle='tab'><span
+                            class='glyphicon glyphicon-th'></span></a>
+                </li>
+                <li style='font-size:30px;'>
+                    <a href='#details' class='t_tab' role='tab' data-toggle='tab'><span
+                            class='glyphicon glyphicon-th-list'></span></a>
+                </li>
+                <li style='font-size:30px;'>
+                    <a href='#agents' class='t_tab' role='tab' data-toggle='tab'><span
+                            class='glyphicon glyphicon-user'></span></a>
+                </li>
+                <li style='font-size:30px;'>
+                    <a href='#stats' class='t_tab' role='tab' data-toggle='tab'><span
+                            class='glyphicon glyphicon-stats'></span></a>
+                </li>
+            </ul>
+            <div class='tab-content' style='padding:15px;'>
+                <div class='tab-pane active' id='history'>
+                    <h3 style='font-size:20px;font-weight:normal;padding-bottom:10px;'>Call Log</h3>
+                    <table class='table table-condensed table-hover'>
+                        <thead>
+                        <tr>
+                            <th class='text-center'><span class='glyphicon glyphicon-transfer'></span></th>
+                            <th class='text-center'><span class='glyphicon glyphicon-earphone'></span></th>
+                            <th>Name</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class=''>
+                            <td class='text-center'><span class='glyphicon glyphicon-arrow-right'></span></td>
+                            <td class='ph_num' phone='0412203021'><span class='glyphicon glyphicon-earphone'></span>
+                            </td>
+                            <td><img src='/images/lenders/square/99.png' alt='' height='18'> <a href='/user/8733'
+                                                                                                class='win_parent'>Mitch
+                                Fraser</a></td>
+                            <td>Tue, 5:02pm</td>
+                            <td>No answer</td>
+                        </tr>
+                        <tr class=''>
+                            <td class='text-center'><span class='glyphicon glyphicon-arrow-right'></span></td>
+                            <td class='ph_num' phone='0425821037'><span class='glyphicon glyphicon-earphone'></span>
+                            </td>
+                            <td>0425821037</td>
+                            <td>Sun, 3:31pm</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr class=''>
+                            <td class='text-center'><span class='glyphicon glyphicon-arrow-right'></span></td>
+                            <td class='ph_num' phone=''><span class='glyphicon glyphicon-earphone'></span></td>
+                            <td></td>
+                            <td>Wed, 7:44pm</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr class=''>
+                            <td class='text-center'><span class='glyphicon glyphicon-arrow-right'></span></td>
+                            <td class='ph_num' phone='0412203021'><span class='glyphicon glyphicon-earphone'></span>
+                            </td>
+                            <td><img src='/images/lenders/square/99.png' alt='' height='18'> <a href='/user/8733'
+                                                                                                class='win_parent'>Mitch
+                                Fraser</a></td>
+                            <td>Wed, 1:56pm</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr class=''>
+                            <td class='text-center'><span class='glyphicon glyphicon-arrow-right'></span></td>
+                            <td class='ph_num' phone='0412203021'><span class='glyphicon glyphicon-earphone'></span>
+                            </td>
+                            <td><img src='/images/lenders/square/99.png' alt='' height='18'> <a href='/user/8733'
+                                                                                                class='win_parent'>Mitch
+                                Fraser</a></td>
+                            <td>Wed, 1:53pm</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr class=''>
+                            <td class='text-center'><span class='glyphicon glyphicon-arrow-right'></span></td>
+                            <td class='ph_num' phone='0283104477'><span class='glyphicon glyphicon-earphone'></span>
+                            </td>
+                            <td><img src='/images/lenders/square/99.png' alt='' height='18'> <a href='/user/5946'
+                                                                                                class='win_parent'>Josh
+                                Kakoschke</a></td>
+                            <td>Fri, 11:11am</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr class=''>
+                            <td class='text-center'><span class='glyphicon glyphicon-arrow-right'></span></td>
+                            <td class='ph_num' phone='0283104477'><span class='glyphicon glyphicon-earphone'></span>
+                            </td>
+                            <td><img src='/images/lenders/square/99.png' alt='' height='18'> <a href='/user/5946'
+                                                                                                class='win_parent'>Josh
+                                Kakoschke</a></td>
+                            <td>Fri, 11:11am</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr class=''>
+                            <td class='text-center'><span class='glyphicon glyphicon-arrow-right'></span></td>
+                            <td class='ph_num' phone='0283104477'><span class='glyphicon glyphicon-earphone'></span>
+                            </td>
+                            <td><img src='/images/lenders/square/99.png' alt='' height='18'> <a href='/user/5946'
+                                                                                                class='win_parent'>Josh
+                                Kakoschke</a></td>
+                            <td>Fri, 11:09am</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr class=''>
+                            <td class='text-center'><span class='glyphicon glyphicon-arrow-right'></span></td>
+                            <td class='ph_num' phone='0283104477'><span class='glyphicon glyphicon-earphone'></span>
+                            </td>
+                            <td><img src='/images/lenders/square/99.png' alt='' height='18'> <a href='/user/5946'
+                                                                                                class='win_parent'>Josh
+                                Kakoschke</a></td>
+                            <td>Fri, 11:08am</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr class=''>
+                            <td class='text-center'><span class='glyphicon glyphicon-arrow-right'></span></td>
+                            <td class='ph_num' phone='0283104477'><span class='glyphicon glyphicon-earphone'></span>
+                            </td>
+                            <td><img src='/images/lenders/square/99.png' alt='' height='18'> <a href='/user/5946'
+                                                                                                class='win_parent'>Josh
+                                Kakoschke</a></td>
+                            <td>Fri, 11:05am</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr class=''>
+                            <td class='text-center'><span class='glyphicon glyphicon-arrow-right'></span></td>
+                            <td class='ph_num' phone='0283104477'><span class='glyphicon glyphicon-earphone'></span>
+                            </td>
+                            <td><img src='/images/lenders/square/99.png' alt='' height='18'> <a href='/user/5946'
+                                                                                                class='win_parent'>Josh
+                                Kakoschke</a></td>
+                            <td>Fri, 11:04am</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr class=''>
+                            <td class='text-center'><span class='glyphicon glyphicon-arrow-right'></span></td>
+                            <td class='ph_num' phone='0283104477'><span class='glyphicon glyphicon-earphone'></span>
+                            </td>
+                            <td><img src='/images/lenders/square/99.png' alt='' height='18'> <a href='/user/5946'
+                                                                                                class='win_parent'>Josh
+                                Kakoschke</a></td>
+                            <td>Fri, 11:02am</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr class=''>
+                            <td class='text-center'><span class='glyphicon glyphicon-arrow-right'></span></td>
+                            <td class='ph_num' phone=''><span class='glyphicon glyphicon-earphone'></span></td>
+                            <td></td>
+                            <td>Fri, 11:01am</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr class=''>
+                            <td class='text-center'><span class='glyphicon glyphicon-arrow-right'></span></td>
+                            <td class='ph_num' phone=''><span class='glyphicon glyphicon-earphone'></span></td>
+                            <td></td>
+                            <td>Fri, 10:12am</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr class=''>
+                            <td class='text-center'><span class='glyphicon glyphicon-arrow-right'></span></td>
+                            <td class='ph_num' phone=''><span class='glyphicon glyphicon-earphone'></span></td>
+                            <td></td>
+                            <td>Fri, 10:11am</td>
+                            <td>Completed</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class='tab-pane ' id='missed'>
+                    <h3 style='font-size:20px;font-weight:normal;padding-bottom:10px;'>Missed Calls</h3>
+                    <table class='table table-condensed table-hover'>
+                        <thead>
+                        <tr>
+                            <th class='text-center'><span class='glyphicon glyphicon-ok'></span></th>
+                            <th class='text-center'><span class='glyphicon glyphicon-earphone'></span></th>
+                            <th>Name</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class=''>
+                            <td class='text-center'><input class='actioned' record_id='5311' type='checkbox'
+                                                           name='actioned[5311]' value='1' checked='checked'></td>
+                            <td class='ph_num' phone='0412203021'><span class='glyphicon glyphicon-earphone'></span>
+                            </td>
+                            <td><img src='/images/lenders/square/99.png' alt='' height='18'> <a href='/user/8733'
+                                                                                                class='win_parent'>Mitch
+                                Fraser</a></td>
+                            <td>Tue, 9:44am</td>
+                            <td>No answer</td>
+                        </tr>
+                        <tr class=''>
+                            <td class='text-center'><input class='actioned' record_id='5309' type='checkbox'
+                                                           name='actioned[5309]' value='1' checked='checked'></td>
+                            <td class='ph_num' phone='0412203021'><span class='glyphicon glyphicon-earphone'></span>
+                            </td>
+                            <td><img src='/images/lenders/square/99.png' alt='' height='18'> <a href='/user/8733'
+                                                                                                class='win_parent'>Mitch
+                                Fraser</a></td>
+                            <td>Tue, 9:42am</td>
+                            <td>No answer</td>
+                        </tr>
+                        <tr class=''>
+                            <td class='text-center'><input class='actioned' record_id='4882' type='checkbox'
+                                                           name='actioned[4882]' value='1' checked='checked'></td>
+                            <td class='ph_num' phone='0412203021'><span class='glyphicon glyphicon-earphone'></span>
+                            </td>
+                            <td><img src='/images/lenders/square/99.png' alt='' height='18'> <a href='/user/8733'
+                                                                                                class='win_parent'>Mitch
+                                Fraser</a></td>
+                            <td>Thu, 11:24am</td>
+                            <td>No answer</td>
+                        </tr>
+                        <tr class=''>
+                            <td class='text-center'><input class='actioned' record_id='750' type='checkbox'
+                                                           name='actioned[750]' value='1' checked='checked'></td>
+                            <td class='ph_num' phone='266696687'><span class='glyphicon glyphicon-earphone'></span></td>
+                            <td>Private</td>
+                            <td>Thu, 12:45pm</td>
+                            <td>No answer</td>
+                        </tr>
+                        <tr class=''>
+                            <td class='text-center'><input class='actioned' record_id='261' type='checkbox'
+                                                           name='actioned[261]' value='1' checked='checked'></td>
+                            <td class='ph_num' phone='266696687'><span class='glyphicon glyphicon-earphone'></span></td>
+                            <td>Private</td>
+                            <td>Thu, 4:55pm</td>
+                            <td>No answer</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class='tab-pane ' id='voicemails'>
+                    <h3 style='font-size:20px;font-weight:normal;padding-bottom:10px;'>Voicemails</h3>
+                    <table class='table table-condensed table-hover'>
+                        <thead>
+                        <tr>
+                            <th class='text-center'><span class='glyphicon glyphicon-ok'></span></th>
+                            <th class='text-center'><span class='glyphicon glyphicon-earphone'></span></th>
+                            <th>Name</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class=''>
+                            <td class='text-center'><input class='actioned' record_id='217' type='checkbox'
+                                                           name='actioned[217]' value='1' checked='checked'></td>
+                            <td class='ph_num' phone='0424941388'><span class='glyphicon glyphicon-earphone'></span>
+                            </td>
+                            <td><img src='/images/lenders/square/99.png' alt='' height='18'> <a href='/user/5118'
+                                                                                                class='win_parent'>Ben
+                                Ge</a></td>
+                            <td>Thu, 12:35pm</td>
+                            <td><a target='_blank'
+                                   href='https://api.twilio.com/2010-04-01/Accounts/AC04229b83d256bf4e4e4a0f70ec416e28/Recordings/REfd7b7605db3698f1f92d1ef68853da1a'
+                                   data-toggle='tooltip' data-placement='top' title='Hi, how are you? This is Dan.'>Voicemail</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class='tab-pane ' id='keypad'>
+                    <h3 style='font-size:20px;font-weight:normal;padding-bottom:10px;'>Keypad</h3>
+                    <div class='btn-group btn-group-justified' style='margin-bottom:10px;'>
+                        <div class='btn-group'>
+                            <button type='button' class='btn btn-default btn-lg send_digit'>1</button>
+                        </div>
+                        <div class='btn-group'>
+                            <button type='button' class='btn btn-default btn-lg send_digit'>2</button>
+                        </div>
+                        <div class='btn-group'>
+                            <button type='button' class='btn btn-default btn-lg send_digit'>3</button>
+                        </div>
+                    </div>
+                    <div class='btn-group btn-group-justified' style='margin-bottom:10px;'>
+                        <div class='btn-group'>
+                            <button type='button' class='btn btn-default btn-lg send_digit'>4</button>
+                        </div>
+                        <div class='btn-group'>
+                            <button type='button' class='btn btn-default btn-lg send_digit'>5</button>
+                        </div>
+                        <div class='btn-group'>
+                            <button type='button' class='btn btn-default btn-lg send_digit'>6</button>
+                        </div>
+                    </div>
+                    <div class='btn-group btn-group-justified' style='margin-bottom:10px;'>
+                        <div class='btn-group'>
+                            <button type='button' class='btn btn-default btn-lg send_digit'>7</button>
+                        </div>
+                        <div class='btn-group'>
+                            <button type='button' class='btn btn-default btn-lg send_digit'>8</button>
+                        </div>
+                        <div class='btn-group'>
+                            <button type='button' class='btn btn-default btn-lg send_digit'>9</button>
+                        </div>
+                    </div>
+                    <div class='btn-group btn-group-justified'>
+                        <div class='btn-group'>
+                            <button type='button' class='btn btn-default btn-lg send_digit'>*</button>
+                        </div>
+                        <div class='btn-group'>
+                            <button type='button' class='btn btn-default btn-lg send_digit'>0</button>
+                        </div>
+                        <div class='btn-group'>
+                            <button type='button' class='btn btn-default btn-lg send_digit'>#</button>
+                        </div>
+                    </div>
+                </div>
+                <div class='tab-pane ' id='details'><h3 style='font-size:20px;font-weight:normal;padding-bottom:10px;'>
+                    Search results for <u></u></h3></div>
+                <div class='tab-pane ' id='agents'>
+                    <h3 style='font-size:20px;font-weight:normal;padding-bottom:10px;'>Agent List</h3>
+                    <table class='table table-condensed table-hover'>
+                        <thead>
+                        <tr>
+                            <th style='text-align:center;'><span class='glyphicon glyphicon-user'></span></th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ok'></span></td>
+                            <td><a href='#' class='ph_num' phone='0283104188'>Annalita Sharma</a></td>
+                            <td><a href='#' class='ph_num' phone='0283104188'>02 8310 4188</a></td>
+                            <td>Available</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ok'></span></td>
+                            <td><a href='#' class='ph_num' phone='0456001623'>Christian Goodall</a></td>
+                            <td><a href='#' class='ph_num' phone='0456001623'>0456 001 623</a></td>
+                            <td>Available</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-user'></span></td>
+                            <td><a href='#' class='ph_num' phone='0283104504'>George Yousif</a></td>
+                            <td><a href='#' class='ph_num' phone='0283104504'>02 8310 4504</a></td>
+                            <td>On Leave</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ok'></span></td>
+                            <td><a href='#' class='ph_num' phone='0404330982'>PUNEET SINGH</a></td>
+                            <td><a href='#' class='ph_num' phone='0404330982'>0404 330 982</a></td>
+                            <td>Available</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ok'></span></td>
+                            <td><a href='#' class='ph_num' phone='0456003553'>Tashi Gazzard</a></td>
+                            <td><a href='#' class='ph_num' phone='0456003553'>0456 003 553</a></td>
+                            <td>Available</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ok'></span></td>
+                            <td><a href='#' class='ph_num' phone='12345678'>Tomorrow Sample</a></td>
+                            <td><a href='#' class='ph_num' phone='12345678'>12345678</a></td>
+                            <td>Available</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ok'></span></td>
+                            <td><a href='#' class='ph_num' phone='0456006610'>Vanessa Flahive</a></td>
+                            <td><a href='#' class='ph_num' phone='0456006610'>0456 006 610</a></td>
+                            <td>Available</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone=''>Adam McKnight</a></td>
+                            <td><a href='#' class='ph_num' phone=''></a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0288809042'>Alyx Helweh</a></td>
+                            <td><a href='#' class='ph_num' phone='0288809042'>02 8880 9042</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0283104247'>Astrella Lawless</a></td>
+                            <td><a href='#' class='ph_num' phone='0283104247'>02 8310 4247</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0283104628'>Ben Callaghan</a></td>
+                            <td><a href='#' class='ph_num' phone='0283104628'>02 8310 4628</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0422916522'>Ben Rowe</a></td>
+                            <td><a href='#' class='ph_num' phone='0422916522'>0422 916 522</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0425296469'>Daniel Jones</a></td>
+                            <td><a href='#' class='ph_num' phone='0425296469'>0425 296 469</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0288800706'>Gabi Godino</a></td>
+                            <td><a href='#' class='ph_num' phone='0288800706'>02 8880 0706</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0288807995'>Isabella Cester</a></td>
+                            <td><a href='#' class='ph_num' phone='0288807995'>02 8880 7995</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0283104480'>Jackie Archer</a></td>
+                            <td><a href='#' class='ph_num' phone='0283104480'>02 8310 4480</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0414896949'>John Allen</a></td>
+                            <td><a href='#' class='ph_num' phone='0414896949'>0414 896 949</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0283104477'>Josh Kakoschke</a></td>
+                            <td><a href='#' class='ph_num' phone='0283104477'>02 8310 4477</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0456007377'>Julianne Walsh</a></td>
+                            <td><a href='#' class='ph_num' phone='0456007377'>0456 007 377</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0288809043'>Ken Xu</a></td>
+                            <td><a href='#' class='ph_num' phone='0288809043'>02 8880 9043</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0283104386'>Kym Burls</a></td>
+                            <td><a href='#' class='ph_num' phone='0283104386'>02 8310 4386</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0456001040'>Laura Kay</a></td>
+                            <td><a href='#' class='ph_num' phone='0456001040'>0456 001 040</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0410564170'>Mike Cornelius</a></td>
+                            <td><a href='#' class='ph_num' phone='0410564170'>0410 564 170</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0412203021'>Mitch Fraser</a></td>
+                            <td><a href='#' class='ph_num' phone='0412203021'>0412 203 021</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0456050353'>Nathan Nguyen</a></td>
+                            <td><a href='#' class='ph_num' phone='0456050353'>0456 050 353</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0456014900'>Nick Michael</a></td>
+                            <td><a href='#' class='ph_num' phone='0456014900'>0456 014 900</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0456004423'>Patrick Leung</a></td>
+                            <td><a href='#' class='ph_num' phone='0456004423'>0456 004 423</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0456000723'>Phil Soper</a></td>
+                            <td><a href='#' class='ph_num' phone='0456000723'>0456 000 723</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0283104116'>Rebekah Malone</a></td>
+                            <td><a href='#' class='ph_num' phone='0283104116'>02 8310 4116</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        <tr class=''>
+                            <td style='width:30px;'><span class='glyphicon glyphicon-ban-circle'></span></td>
+                            <td><a href='#' class='ph_num' phone='0437009909'>Ronita Miles</a></td>
+                            <td><a href='#' class='ph_num' phone='0437009909'>0437 009 909</a></td>
+                            <td>Offline</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class='tab-pane ' id='stats'><h3 style='font-size:20px;font-weight:normal;padding-bottom:10px;'>
+                    Statistics for Today</h3>
+                    <table class='table table-condensed table-hover'>
+                        <thead>
+                        <tr>
+                            <th>Direction</th>
+                            <th class='text-right'>Calls</th>
+                            <th class='text-right'>Duration</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><b>Total</b></td>
+                            <td class='text-right'><b>0</b></td>
+                            <td class='text-right'><b>0:00</b></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
