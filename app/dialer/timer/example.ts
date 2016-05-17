@@ -1,23 +1,28 @@
-import { Component } from 'angular2/core';
-import {TimerService} from "./timer.service";
+import { Component, OnInit } from 'angular2/core';
+import {TimerServiceEmitter} from "./timer.service";
 
 
 @Component({
     selector: 'example',
     template: `current state: {{state}}`,
-    providers: [TimerService]
 })
 
 export class Example {
 
-    public state:string;
+    public subscription:any = null;
+    public state = '';
 
-    constructor(private TimerService:TimerService){
-
+    constructor(private pubSubService:TimerServiceEmitter){
+        console.log('from example' , pubSubService );
     }
 
-    get state():string{
-        let state = this.TimerService.state;
-        return state.toString();
+    temp(state):void{
+        this.state = state;
     }
+
+    ngOnInit(){
+        console.log('called from ngOnInit example');
+        this.pubSubService.subscribe(state => this.temp(state))
+    }
+
 }

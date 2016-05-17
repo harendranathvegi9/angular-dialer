@@ -1,10 +1,9 @@
-import {Component, Input, Output } from 'angular2/core';
-import {TimerService} from '/app/dialer/timer/timer.service';
+import {Component, Input } from 'angular2/core';
+import {TimerServiceEmitter} from '/app/dialer/timer/timer.service';
 
 @Component({
     selector: 'timer',
     template: `<span class='badge'>{{renderTime}}</span>&nbsp;<span>{{title}}</span>`,
-    providers:[TimerService]
 })
 
 // interface TimerComponentInterface {
@@ -16,15 +15,15 @@ export class TimerComponent {
 
     private _interval:number  = 1000;
     private _intervalId:number;
+    private _time = 0;
 
+    public toggleState:boolean;
     public renderTime:string;
     public title:string;
 
     // setable properties
     @Input() time: number;
     @Input() seperator:string;
-
-    @Output() toggle:EventEmitter<string> = new EventEmitter<string>();
 
     /*
     * toTime
@@ -64,25 +63,25 @@ export class TimerComponent {
         this.intervalId = setInterval(()=> {
             this.time += this.interval;
             this.renderTime = this.toTime(this.time/this.interval, seperator);
+            this.TimerServiceEmitter.next(this.time);
             
         },this.interval);
     }
 
     pauseTimer():void {
         clearInterval(this.intervalId);
-        this.TimerService.pause();
     }
 
     toggle():void{
-
+        console.log(this.toggleState);
     }
 
     get time():number{
-        return this.TimerService.time;
+        return this._time;
     }
 
     set time(time:number){
-        this.TimerService.time = time;
+        this._time = time;
     }
 
     get interval():number{
@@ -97,9 +96,7 @@ export class TimerComponent {
         this._intervalId = newId;
     }
 
-
-
-    constructor(private TimerService:TimerService){
+    constructor(private TimerServiceEmitter:TimerServiceEmitter){
         
     }
 
