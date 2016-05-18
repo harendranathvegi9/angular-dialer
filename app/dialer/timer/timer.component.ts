@@ -3,7 +3,7 @@ import {TimerServiceEmitter} from '/app/dialer/timer/timer.service';
 
 @Component({
     selector: 'timer',
-    template: `<span class='badge'>{{renderTime}}</span>&nbsp;<span>{{title}}</span>`,
+    template: `<div (click)="toggle($event)"><span class='badge'>{{renderTime}}</span>&nbsp;<span>{{title}}</span></div>`,
 })
 
 // interface TimerComponentInterface {
@@ -17,14 +17,14 @@ export class TimerComponent {
     private _intervalId:number;
     private _time = 0;
 
-    public toggleState:boolean;
+    public toggleState:boolean = false;
     public renderTime:string;
     public title:string;
 
     // setable properties
     @Input() time: number;
     @Input() seperator:string;
-
+    
     /*
     * toTime
     * @return String formats the time counter based on
@@ -72,8 +72,10 @@ export class TimerComponent {
         clearInterval(this.intervalId);
     }
 
-    toggle():void{
-        console.log(this.toggleState);
+    toggle(event):boolean{
+        this.toggleState = !this.toggleState;
+        this.TimerServiceEmitter.next(this.toggleState);
+        return this.toggleState;
     }
 
     get time():number{

@@ -21,7 +21,6 @@ export class Example {
     }
 
     ngOnInit(){
-        console.log('called from ngOnInit example');
         this.pubSubService.subscribe(state => this.temp(state))
     }
 

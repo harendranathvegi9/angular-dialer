@@ -3,7 +3,7 @@ import { RouteParams, Router } from 'angular2/router';
 
 import { IProduct } from './product';
 import { ProductService } from './product.service';
-import { StarComponent } from '../shared/star.component';
+import { StarComponent } from '../shared/star/star.component.ts';
 
 @Component({
     templateUrl: 'app/products/product-detail.component.html',
