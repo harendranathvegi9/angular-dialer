@@ -17,17 +17,10 @@
 
                 <example></example>
 
-                <li class='dropdown pull-right'>
-                    <a href='#' class='dropdown-toggle' data-toggle='dropdown'><span id='agent_status'>Loading</span>
-                        <span class='caret'></span></a>
-                    <ul class='dropdown-menu' role='menu'>
-                        <li><a href='#' class='status_update'>Available</a></li>
-                        <li><a href='#' class='status_update'>Busy</a></li>
-                        <li><a href='#' class='status_update'>Away</a></li>
-                        <li class='divider'></li>
-                        <li><a href='#' class='status_update'>Offline</a></li>
-                    </ul>
+                <li class="pull-right">
+                    <statedropdown [init]="agentStatusModel"></statedropdown>
                 </li>
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

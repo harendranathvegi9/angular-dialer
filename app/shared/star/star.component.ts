@@ -1,10 +1,10 @@
 import { Component, OnChanges, Input,
-         Output, EventEmitter } from 'angular2/core';
+         Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'ai-star',
-    templateUrl: 'app/shared/star.component.html',
-    styleUrls: ['app/shared/star.component.css']
+    templateUrl: 'app/shared/star/star.component.html',
+    styleUrls: ['app/shared/star/star.component.css']
 })
 
 export class StarComponent implements OnChanges {

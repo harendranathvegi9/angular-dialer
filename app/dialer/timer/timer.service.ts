@@ -1,7 +1,7 @@
-import {Injectable, EventEmitter} from 'angular2/core';
+import {Injectable, EventEmitter} from '@angular/core';
 
 @Injectable()
-export class TimerServiceEmitter extends EventEmitter{
+export class TimerServiceEmitter extends EventEmitter<T>{
     constructor() {
         super();
     }
