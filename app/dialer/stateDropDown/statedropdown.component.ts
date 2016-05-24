@@ -1,5 +1,6 @@
-import {Component,Input,Output,EventEmitter} from '@angular/core';
+import {Component,Output,OnInit,EventEmitter} from '@angular/core';
 import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+import {AgentStatusService} from "/app/dialer/agent/agent.status.service";
 
 
 @Component({
@@ -17,15 +18,25 @@ import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
         </div>
     </div>`
 })
-export class StateDropDown {
-
-    @Input('init') items:Array<item>;
-    @Output() change: EventEmitter<string> = new EventEmitter();
+export class StateDropDown implements OnInit {
 
     public disabled:boolean = false;
     public status:{isopen:boolean} = {isopen: false};
     public currentItem = 'Loading...';
-    
+    public items = [];
+
+
+    constructor(private _agentStatusService: AgentStatusService ){
+
+    };
+
+    ngOnInit():void {
+        this._agentStatusService.listenForModel().subscribe(function(agentModel){
+            this.items = agentModel;
+            this.currentItem = agentModel[0];
+        }.bind(this));
+    }
+
     public toggled($event:MouseEvent):void {
         try {
             this.currentItem = $event.target.text;
@@ -35,13 +46,8 @@ export class StateDropDown {
         }
     }
 
-    ngOnInit():void{
-        this.currentItem = this.items[0];
-    }
-
     private broadcastChange(newState:string):any {
-        console.log('emitting:' ,newState.toLowerCase());
-        return this.change.emit(newState.toLowerCase());
+        this._agentStatusService.state = newState;
     }
 
 }

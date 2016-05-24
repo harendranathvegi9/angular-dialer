@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { EventEmitter, Output, Injectable } from '@angular/core';
 
 // export enum AgentStatus {
 //     available =1 ,
@@ -12,8 +12,12 @@ import { EventEmitter, Injectable } from '@angular/core';
 // }
 @Injectable()
 export class AgentStatusService {
-      public states = ['offline','available','busy','away'];
+
+     @Output() modelEmitter: EventEmitter<any> = new EventEmitter();
+     @Output() agentChangeEmitter : EventEmitter<any> = new EventEmitter();
+
       private _state;
+      public states = ['available','busy','away','offline'];
       
       constructor(){
            this._state = this.states[0];
@@ -21,7 +25,8 @@ export class AgentStatusService {
       
       set state(state:string){
           try{
-          this._state = this.states[state];
+          this._state = state;
+          this.agentChangeEmitter.emit(this._state);
           } catch(e){
               console.log('tried setting bad enum value on AgentStatus', e.stack);
           }
@@ -30,8 +35,13 @@ export class AgentStatusService {
       get state():string{
           return this._state; 
       }
-      
-      get model():any {
-        return this.states;    
+
+      listenForChanges():any {
+          return this.agentChangeEmitter;
+      }
+
+      listenForModel():any {
+        setTimeout(()=>this.modelEmitter.emit(this.states),0);
+        return this.modelEmitter;
       }
 }
